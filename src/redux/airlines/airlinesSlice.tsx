@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import jsonp from "jsonp";
+import fetchJsonp from "fetch-jsonp";
 
 import { Alliance } from "../../types/alliance";
 import { Airline } from "../../types/airline";
@@ -21,17 +21,8 @@ export const initialState: AirlinesState = {
 };
 
 export const fetchData = createAsyncThunk("airlines/fetchData", async () => {
-  let airlines: Airline[] = [];
-
-  jsonp(API_URL, { param: "jsonp" }, (err, data) => {
-    if (err) {
-      console.error(err.message);
-      return;
-    }
-
-    airlines = data;
-  });
-  return airlines;
+  const data = await fetchJsonp(API_URL, { jsonpCallback: "jsonp" });
+  return await data.json();
 });
 
 export const airlinesSlice = createSlice({
