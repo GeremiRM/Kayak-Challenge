@@ -1,9 +1,11 @@
 import "./App.scss";
 
+import { Heading } from "./Components/Heading";
+
 const App = () => {
   return (
     <div>
-      <div></div>
+      <Heading />
     </div>
   );
 };
