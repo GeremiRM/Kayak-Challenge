@@ -1,0 +1,30 @@
+@import "../../styles/variables";
+
+$inputSize: 20px;
+
+.title {
+  font-weight: bold;
+  margin-bottom: 23px;
+}
+
+.filters {
+  display: flex;
+  margin-bottom: 56px;
+
+  .filter {
+    align-items: center;
+    display: flex;
+    margin-right: 24px;
+
+    &__input {
+      border-radius: 100%;
+      height: $inputSize;
+      margin-right: 10px;
+      width: $inputSize;
+    }
+
+    &__label {
+      font-size: 14px;
+    }
+  }
+}

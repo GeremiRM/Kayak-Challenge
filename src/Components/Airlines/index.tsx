@@ -6,7 +6,7 @@ import { Airline } from "./Airline";
 import "./styles.scss";
 
 export const Airlines: React.FC = () => {
-  const { airlines, status } = useAppSelector(selectAirlines);
+  const { airlines, status, filters } = useAppSelector(selectAirlines);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -14,9 +14,15 @@ export const Airlines: React.FC = () => {
   }, [dispatch]);
 
   const renderAirlines = () => {
-    return airlines
+    const filteredAirlines =
+      // Are there any filters active?
+      filters.length === 0
+        ? airlines
+        : airlines.filter(({ alliance }) => filters.includes(alliance));
+
+    return filteredAirlines
       .slice(0, 20)
-      .map((airline) => <Airline airline={airline} key={airline.code} />);
+      .map((airline) => <Airline key={airline.code} airline={airline} />);
   };
 
   return <div className="airlines">{renderAirlines()}</div>;

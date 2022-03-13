@@ -10,13 +10,13 @@ const API_URL =
 
 export interface AirlinesState {
   airlines: Airline[];
-  filter: AllianceType;
+  filters: AllianceType[];
   status: "idle" | "loading" | "failed";
 }
 
 export const initialState: AirlinesState = {
   airlines: [],
-  filter: "none",
+  filters: [],
   status: "idle",
 };
 
@@ -28,7 +28,16 @@ export const fetchData = createAsyncThunk("airlines/fetchData", async () => {
 export const airlinesSlice = createSlice({
   name: "airlines",
   initialState,
-  reducers: {},
+  reducers: {
+    changeFilter: (state, action: PayloadAction<AllianceType>) => {
+      // Check if filter (action.payload) is active
+      // If it is, remove that filter
+      // If it is not, add it to the list
+      state.filters = state.filters.includes(action.payload)
+        ? state.filters.filter((filter) => filter !== action.payload)
+        : state.filters.concat(action.payload);
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchData.pending, (state) => {
       state.status = "loading";
@@ -39,6 +48,8 @@ export const airlinesSlice = createSlice({
     });
   },
 });
+
+export const { changeFilter } = airlinesSlice.actions;
 
 export const selectAirlines = (state: RootState) => state.airlines;
 

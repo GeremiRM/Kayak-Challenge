@@ -17,44 +17,51 @@ $logoSize: 32px;
   display: flex;
   justify-content: center;
   line-height: 1.5rem;
+  padding: 0 15%;
   transition: $transition;
-}
 
-.airline:hover {
-  border: 1px solid $borderColor;
-}
+  &:hover {
+    border: 1px solid $borderColor;
 
-.logo {
-  height: $logoSize;
-  margin-right: 18px;
-  width: $logoSize;
-}
+    .description {
+      display: block;
+      opacity: 1;
+    }
+  }
 
-.logo__img {
-  height: 100%;
-}
+  .logo {
+    height: $logoSize;
+    margin-right: 18px;
+    width: $logoSize;
 
-.info__name {
-  font-size: 16px;
-  font-weight: bold;
-}
+    &__img {
+      height: 100%;
+    }
+  }
 
-.description {
-  display: none;
-  font-size: 14px;
-  opacity: 0;
-}
+  .info {
+    &__name {
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
 
-.airline:hover .description {
-  display: block;
-  opacity: 1;
-}
+  .description {
+    display: none;
+    font-size: 14px;
+    opacity: 0;
 
-.description__site {
-  color: $textLightColor;
-  display: block;
-  max-width: 25ch;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+    &__site {
+      color: $textLightColor;
+      display: block;
+      max-width: 25ch;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      &:hover {
+        color: $textDarkColor;
+      }
+    }
+  }
 }

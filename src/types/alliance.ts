@@ -1,7 +1,7 @@
 export const Alliances = {
-  SA: "Start Alliance",
-  ST: "Sky Team",
   OW: "Oneworld",
+  ST: "Sky Team",
+  SA: "Start Alliance",
   none: "No Alliance",
 };
 
