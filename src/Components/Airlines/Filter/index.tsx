@@ -1,6 +1,6 @@
-import { Alliances, AllianceType } from "../../types/alliance";
-import { useAppDispatch } from "../../redux/hooks";
-import { changeFilter } from "../../redux/airlines/airlinesSlice";
+import { Alliances, AllianceType } from "../../../types/alliance";
+import { useAppDispatch } from "../../../redux/hooks";
+import { changeFilter } from "../../../redux/airlines/airlinesSlice";
 
 import "./styles.scss";
 

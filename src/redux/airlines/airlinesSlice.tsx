@@ -11,12 +11,14 @@ const API_URL =
 export interface AirlinesState {
   airlines: Airline[];
   filters: AllianceType[];
+  currentPage: number;
   status: "idle" | "loading" | "failed";
 }
 
 export const initialState: AirlinesState = {
   airlines: [],
   filters: [],
+  currentPage: 0,
   status: "idle",
 };
 
@@ -36,6 +38,10 @@ export const airlinesSlice = createSlice({
       state.filters = state.filters.includes(action.payload)
         ? state.filters.filter((filter) => filter !== action.payload)
         : state.filters.concat(action.payload);
+      state.currentPage = 0;
+    },
+    changePage: (state, action: PayloadAction<number>) => {
+      state.currentPage = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -49,7 +55,7 @@ export const airlinesSlice = createSlice({
   },
 });
 
-export const { changeFilter } = airlinesSlice.actions;
+export const { changeFilter, changePage } = airlinesSlice.actions;
 
 export const selectAirlines = (state: RootState) => state.airlines;
 

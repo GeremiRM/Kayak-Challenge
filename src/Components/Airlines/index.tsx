@@ -1,29 +1,48 @@
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchData, selectAirlines } from "../../redux/airlines/airlinesSlice";
 import { useEffect } from "react";
+
+import { Filter } from "./Filter";
 import { Airline } from "./Airline";
 
 import "./styles.scss";
+import { Pagination } from "./Pagination";
+import { filterAirlines } from "../utils/filterAirlines";
+
+const ITEMS_PER_PAGE = 20;
 
 export const Airlines: React.FC = () => {
-  const { airlines, status, filters } = useAppSelector(selectAirlines);
+  const { airlines, status, filters, currentPage } =
+    useAppSelector(selectAirlines);
+
   const dispatch = useAppDispatch();
+
+  const filteredAirlines = filterAirlines(airlines, filters);
 
   useEffect(() => {
     dispatch(fetchData());
   }, [dispatch]);
 
   const renderAirlines = () => {
-    const filteredAirlines =
-      // Are there any filters active?
-      filters.length === 0
-        ? airlines
-        : airlines.filter(({ alliance }) => filters.includes(alliance));
-
-    return filteredAirlines
-      .slice(0, 20)
-      .map((airline) => <Airline key={airline.code} airline={airline} />);
+    return (
+      filteredAirlines
+        // (0 * 20 = 0, 0 * 20 + 20 = 20 -> from 0 to 20)
+        .slice(
+          currentPage * ITEMS_PER_PAGE,
+          currentPage * ITEMS_PER_PAGE + ITEMS_PER_PAGE
+        )
+        .map((airline) => <Airline key={airline.code} airline={airline} />)
+    );
   };
 
-  return <div className="airlines">{renderAirlines()}</div>;
+  return (
+    <main className="airlines">
+      <Filter />
+      <section className="tiles">{renderAirlines()}</section>
+      <Pagination
+        numberOfItems={filteredAirlines.length}
+        itemsPerPage={ITEMS_PER_PAGE}
+      />
+    </main>
+  );
 };
