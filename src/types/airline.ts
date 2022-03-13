@@ -1,9 +1,9 @@
-import { Alliance } from "./alliance";
+import { AllianceType } from "./alliance";
 
 export interface Airline {
   site: string;
   code: string;
-  alliance: Alliance;
+  alliance: AllianceType;
   phone: string;
   name: string;
   usName: string | null;

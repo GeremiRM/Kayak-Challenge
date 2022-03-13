@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import fetchJsonp from "fetch-jsonp";
 
-import { Alliance } from "../../types/alliance";
+import { AllianceType } from "../../types/alliance";
 import { Airline } from "../../types/airline";
 
 const API_URL =
@@ -10,7 +10,7 @@ const API_URL =
 
 export interface AirlinesState {
   airlines: Airline[];
-  filter: Alliance;
+  filter: AllianceType;
   status: "idle" | "loading" | "failed";
 }
 

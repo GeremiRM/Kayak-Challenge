@@ -1,0 +1,11 @@
+@import "../../styles/variables";
+
+$gridGap: 16px;
+
+.airlines {
+  display: grid;
+  gap: $gridGap;
+  grid-auto-rows: 240px;
+  grid-template-columns: repeat(auto-fit, 300px);
+  justify-content: center;
+}

@@ -1,0 +1,60 @@
+@import "../../../styles/variables";
+
+$borderColor: #363f45;
+$borderRadius: 8px;
+$boxShadow: 0 -1px 4px 0 rgba(25, 32, 36, 0.04),
+  0 3px 6px 0 rgba(25, 32, 36, 0.16);
+
+$transition: 1s ease all;
+
+$logoSize: 32px;
+
+.airline {
+  align-items: center;
+  background-color: $secondaryColor;
+  border-radius: $borderRadius;
+  box-shadow: $boxShadow;
+  display: flex;
+  justify-content: center;
+  line-height: 1.5rem;
+  transition: $transition;
+}
+
+.airline:hover {
+  border: 1px solid $borderColor;
+}
+
+.logo {
+  height: $logoSize;
+  margin-right: 18px;
+  width: $logoSize;
+}
+
+.logo__img {
+  height: 100%;
+}
+
+.info__name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.description {
+  display: none;
+  font-size: 14px;
+  opacity: 0;
+}
+
+.airline:hover .description {
+  display: block;
+  opacity: 1;
+}
+
+.description__site {
+  color: $textLightColor;
+  display: block;
+  max-width: 25ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
