@@ -36,7 +36,8 @@ export const Airline: React.FC<AirlineProps> = ({ airline }) => {
             target="_blank"
             rel="noreferrer"
           >
-            {site}
+            {/* Removes https:///www. from site url*/}
+            {site.replace(/^https?:\/\/www./, "")}
           </a>
         </div>
       </div>

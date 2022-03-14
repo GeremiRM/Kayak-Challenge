@@ -16,7 +16,7 @@ $logoSize: 32px;
   box-shadow: $boxShadow;
   display: flex;
   justify-content: center;
-  line-height: 1.5rem;
+  line-height: 125%;
   padding: 0 15%;
   transition: $transition;
 
@@ -35,7 +35,8 @@ $logoSize: 32px;
     width: $logoSize;
 
     &__img {
-      height: 100%;
+      height: $logoSize;
+      width: $logoSize;
     }
   }
 

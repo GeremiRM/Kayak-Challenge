@@ -41,16 +41,21 @@ export const Airlines: React.FC = () => {
 
   // Page number click
   const handlePageClick = (page: number) => {
-    console.log(page);
     dispatch(changePage(page));
   };
 
   return (
     <main className="airlines">
+      {/* Title */}
       <h1 className="airlines__title">Airlines</h1>
 
+      {/*  Airlines Filters*/}
       <Filter />
+
+      {/* Airlines Tiles */}
       <section className="tiles">{renderAirlines}</section>
+
+      {/* Pagination */}
       <Pagination
         numberOfItems={filteredAirlines.length}
         itemsPerPage={ITEMS_PER_PAGE}
