@@ -1,5 +1,5 @@
-import { Airline } from "../../types/airline";
-import { AllianceType } from "../../types/alliance";
+import { Airline } from "../types/airline";
+import { AllianceType } from "../types/alliance";
 
 export const filterAirlines = (
   airlines: Airline[],

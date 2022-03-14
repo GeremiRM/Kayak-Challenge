@@ -4,9 +4,10 @@
 $gridGap: 16px;
 
 .airlines {
-  .title {
+  &__title {
     color: $textDarkColor;
-    font-size: 30px;
+    display: block;
+    font-weight: 900;
     margin: 67px 0 73px;
 
     @include small {

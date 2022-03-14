@@ -1,24 +1,23 @@
+import { useEffect, useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import {
   changePage,
   fetchData,
   selectAirlines,
 } from "../../redux/airlines/airlinesSlice";
-import { useEffect } from "react";
 
 import { Filter } from "./Filter";
 import { Airline } from "./Airline";
+import { Pagination } from "./Pagination";
+
+import { filterAirlines } from "../../utils/filterAirlines";
 
 import "./styles.scss";
-import { Pagination } from "./Pagination";
-import { filterAirlines } from "../utils/filterAirlines";
-import { useMemo } from "react";
 
 const ITEMS_PER_PAGE = 20;
 
 export const Airlines: React.FC = () => {
-  const { airlines, status, filters, currentPage } =
-    useAppSelector(selectAirlines);
+  const { airlines, filters, currentPage } = useAppSelector(selectAirlines);
 
   const dispatch = useAppDispatch();
 
@@ -48,9 +47,8 @@ export const Airlines: React.FC = () => {
 
   return (
     <main className="airlines">
-      <div className="title">
-        <h1>Airlines</h1>
-      </div>
+      <h1 className="airlines__title">Airlines</h1>
+
       <Filter />
       <section className="tiles">{renderAirlines}</section>
       <Pagination
