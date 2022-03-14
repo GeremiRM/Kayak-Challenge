@@ -1,0 +1,19 @@
+@import "./variables";
+
+@mixin small {
+  @media (min-width: $sm) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media (min-width: $md) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (min-width: $lg) {
+    @content;
+  }
+}

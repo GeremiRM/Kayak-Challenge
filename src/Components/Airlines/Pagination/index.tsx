@@ -1,36 +1,43 @@
-import { changePage } from "../../../redux/airlines/airlinesSlice";
-import { useAppDispatch } from "../../../redux/hooks";
+import ReactPaginate from "react-paginate";
+
+import "./styles.scss";
 
 interface PaginationProps {
   numberOfItems: number;
   itemsPerPage: number;
+  handleClick: (page: number) => void;
 }
 
 export const Pagination: React.FC<PaginationProps> = ({
   numberOfItems,
   itemsPerPage,
+  handleClick,
 }) => {
-  const dispatch = useAppDispatch();
+  const pageCount = Math.ceil(numberOfItems / itemsPerPage);
 
-  const numberOfPages = Math.ceil(numberOfItems / itemsPerPage);
-
-  const handleClick = (page: number) => {
-    dispatch(changePage(page));
-  };
-
-  const renderPages = () => {
-    return [...Array(numberOfPages)].map((_, idx) => (
-      <button
-        className="pager__page"
-        key={idx}
-        onClick={() => {
-          handleClick(idx);
+  return (
+    <section className="pagination">
+      <ReactPaginate
+        nextLabel=">"
+        onPageChange={(event) => {
+          handleClick(event.selected);
         }}
-      >
-        {idx + 1}
-      </button>
-    ));
-  };
-
-  return <section className="pager">{renderPages()}</section>;
+        pageRangeDisplayed={1}
+        marginPagesDisplayed={2}
+        pageCount={pageCount}
+        previousLabel="<"
+        pageClassName="page"
+        pageLinkClassName="page__link"
+        previousClassName="page"
+        previousLinkClassName="page__link"
+        nextClassName="page"
+        nextLinkClassName="page__link"
+        breakLabel="..."
+        breakClassName="page"
+        breakLinkClassName="page__link"
+        containerClassName="pager"
+        activeLinkClassName="page__link--active"
+      />
+    </section>
+  );
 };

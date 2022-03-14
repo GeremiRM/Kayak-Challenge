@@ -1,11 +1,24 @@
 @import "../../styles/variables";
+@import "../../styles/mixins";
 
 $gridGap: 16px;
 
-.tiles {
-  display: grid;
-  gap: $gridGap;
-  grid-auto-rows: 240px;
-  grid-template-columns: repeat(auto-fit, 300px);
-  justify-content: center;
+.airlines {
+  .title {
+    color: $textDarkColor;
+    font-size: 30px;
+    margin: 67px 0 73px;
+
+    @include small {
+      font-size: 44px;
+    }
+  }
+
+  .tiles {
+    display: grid;
+    gap: $gridGap;
+    grid-auto-rows: 240px;
+    grid-template-columns: repeat(auto-fit, 300px);
+    justify-content: center;
+  }
 }

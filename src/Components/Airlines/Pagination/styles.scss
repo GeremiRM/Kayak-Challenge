@@ -1,0 +1,48 @@
+@import "../../../styles/mixins";
+
+$lightBlue: #0d6efd;
+$darkBlue: #0a58ca;
+
+.pagination {
+  padding: 2rem 0;
+
+  .pager {
+    display: flex;
+    font-size: 12px;
+    list-style: none;
+    justify-content: center;
+    margin: 0 auto;
+    width: clamp(300px, 100%, 600px);
+
+    @include small {
+      font-size: 1rem;
+    }
+
+    .page {
+      &__link {
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        color: $lightBlue;
+        display: block;
+        margin: 0 0.5rem;
+        padding: 0.25rem 0.5rem;
+        position: relative;
+        text-decoration: none;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+          border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+        &--active {
+          background: $darkBlue;
+          color: white;
+        }
+
+        &:hover {
+          background-color: #e9ecef;
+          border-color: #dee2e6;
+          color: $darkBlue;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

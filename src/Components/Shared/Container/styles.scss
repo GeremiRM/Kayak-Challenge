@@ -1,4 +1,11 @@
+@import "../../../styles/mixins";
+
 .container {
   height: 100px;
-  margin: 0 94px;
+  margin: 0 5%;
+  min-width: 320px;
+
+  @include small {
+    margin: 0 94px;
+  }
 }

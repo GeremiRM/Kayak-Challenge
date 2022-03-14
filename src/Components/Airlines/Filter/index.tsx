@@ -32,7 +32,7 @@ export const Filter: React.FC = () => {
 
   return (
     <section>
-      <div className="title">
+      <div className="text">
         <p>Filter by Alliances</p>
       </div>
       <div className="filters">{renderFilters()}</div>

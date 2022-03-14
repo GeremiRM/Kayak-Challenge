@@ -1,20 +1,32 @@
 @import "../../../styles/variables";
+@import "../../../styles/mixins";
 
 $inputSize: 20px;
 
-.title {
+.text {
   font-weight: bold;
   margin-bottom: 23px;
 }
 
 .filters {
   display: flex;
+  flex-direction: column;
   margin-bottom: 56px;
+
+  @include small {
+    flex-direction: row;
+  }
 
   .filter {
     align-items: center;
     display: flex;
+    margin: 1rem 0;
     margin-right: 24px;
+
+    @include small {
+      margin: 0;
+      margin-right: 24px;
+    }
 
     &__input {
       border-radius: 100%;
